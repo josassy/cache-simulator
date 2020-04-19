@@ -22,14 +22,16 @@ const Cache = ({ setNum, data = [] }) => {
             <TableCell align="right">Set</TableCell>
             <TableCell align="right">Tag</TableCell>
             <TableCell align="right">Data</TableCell>
+            <TableCell align="right">#</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {data.map((line, index) => (
             <TableRow key={index}>
-              <TableCell>{index}</TableCell>
-              <TableCell>{line.tag && line.tag.toString(16).toUpperCase()}</TableCell>
-              <TableCell>{line.data && line.data}</TableCell>
+              <TableCell align="right">{index}</TableCell>
+              <TableCell align="right">{line.tag && line.tag.toString(16).toUpperCase()}</TableCell>
+              <TableCell align="right">{line.data && line.data}</TableCell>
+              <TableCell align="right">{line.iteration && line.iteration}</TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from "./Header";
 import Memory from "./Memory";
 import Cache from "./Cache";
+import memoryData from "./memory_data";
 import { makeStyles, Typography, TextField, MenuItem, Button, Select, FormControl, InputLabel } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
@@ -15,7 +16,6 @@ const useStyles = makeStyles(theme => ({
   },
   centerAlign: {
     display: "flex",
-    alignItems: "flex-start",
     flexFlow: "row wrap",
     alignItems: "stretch"
   },
@@ -46,8 +46,11 @@ const App = () => {
   const resetCache = () => {
     setCacheData(initialCache);
     setStatusText(welcome);
+    setIteration(0);
+    setSearch("");
   }
   const [cacheData, setCacheData] = useState(initialCache);
+  const [iteration, setIteration] = useState(1);
 
   const welcome = "Please enter an address to retrieve from memory:"
   const [statusText, setStatusText] = useState(welcome);
@@ -74,13 +77,59 @@ const App = () => {
     }
   }
 
+  const searchMemory = e => {
+    e.preventDefault();
+    if (search === '') {
+      return;
+    }
+    const address = parseInt(search, searchBase);
+    if (address >= memoryData.length) {
+      setStatusText("Invalid Address. Try Again.");
+    }
+    else {
+      const data = memoryData[address];
+      const tag = Math.floor(address / 4);
+      const index = address % 4;
+      let cache = cacheData;
+      let setNum = -1;
+      if (cacheData[0][index].tag === tag) {
+        setNum = 0;
+      }
+      else if (cacheData[1][index].tag === tag) {
+        setNum = 1;
+      }
+      if (setNum >= 0) {
+        // display hit
+        setStatusText(`Cache Hit (Set 1): ${data}`);
+  
+        // update cache iteration
+        cache[setNum][index].iteration = iteration;
+        setCacheData(cache);
+        setIteration(iteration + 1);
+      }
+      // data miss
+      else {
+        if ((cacheData[1][index].iteration == null && cacheData[0][index].iteration != null) || cacheData[0][index].iteration > cacheData[1][index].iteration) {
+          setNum = 1;
+        }
+        else {
+          setNum = 0
+        }
+        cache[setNum][index] = { data: data, tag: tag, iteration: iteration };
+        setCacheData(cache);
+        setStatusText(`Cache Miss: ${data}. Storing in Set ${setNum}`);
+        setIteration(iteration + 1);
+      }
+    }
+  }
+
   return (
     <div className={classes.app}>
       <Header />
       <div className={classes.flexContainer}>
         <div className={classes.leftPane}>
           <Typography className={classes.formControl} variant="body1">{statusText}</Typography>
-          <div className={classes.centerAlign}>
+          <form className={classes.centerAlign} onSubmit={searchMemory}>
             <FormControl variant="filled" className={classes.formControl}>
               <InputLabel>Radix</InputLabel>
               <Select
@@ -100,11 +149,12 @@ const App = () => {
               onChange={updateSearch}
             />
             <Button
+              type="submit"
               className={classes.formControl}
               variant="contained"
               color="primary"
             >
-              Search
+              Retrieve
             </Button>
             <Button
               className={classes.formControl}
@@ -114,7 +164,7 @@ const App = () => {
             >
               Reset
             </Button>
-          </div>
+          </form>
           <div className={classes.flexContainer}>
             <Cache setNum={0} data={cacheData[0]} />
             <Cache setNum={1} data={cacheData[1]} />
