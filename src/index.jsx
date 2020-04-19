@@ -6,6 +6,7 @@ import { createMuiTheme, ThemeProvider, CssBaseline } from '@material-ui/core';
 const darkTheme = createMuiTheme({
   palette: {
     type: 'dark',
+    
   },
   typography: {
     fontFamily: [
