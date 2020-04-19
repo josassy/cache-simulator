@@ -3,7 +3,7 @@ import Header from "./Header";
 import Memory from "./Memory";
 import Cache from "./Cache";
 import memoryData from "./memory_data";
-import { makeStyles, Typography, TextField, MenuItem, Button, Select, FormControl, InputLabel } from '@material-ui/core';
+import { makeStyles, Typography, TextField, MenuItem, Button, Select, FormControl, InputLabel, Link } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   app: {
@@ -22,6 +22,16 @@ const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
+  },
+  headerLinkContainer: {
+    padding: theme.spacing(1),
+    marginTop: theme.spacing(2),
+    backgroundColor: theme.palette.primary.main,
+    display: "inline-block",
+  },
+  headerLink: {
+    fontSize: "1rem",
+    color: theme.palette.text.primary,
   },
 }));
 
@@ -125,6 +135,9 @@ const App = () => {
 
   return (
     <div className={classes.app}>
+      <div className={classes.headerLinkContainer}>
+        <Link className={classes.headerLink} href="https://josiahlansford.com/projects">&laquo; Back to Projects</Link>
+      </div>
       <Header />
       <div className={classes.flexContainer}>
         <div className={classes.leftPane}>
