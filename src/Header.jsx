@@ -7,11 +7,13 @@ const useStyles = makeStyles(theme => ({
         top: 0,
         backgroundColor: theme.palette.background.default,
         zIndex: 10,
+        padding: theme.spacing(1),
     },
     link: {
         color: theme.palette.text.primary,
     }
 }));
+
 
 const Header = () => {
     const classes = useStyles();
