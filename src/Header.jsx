@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, makeStyles } from '@material-ui/core';
+import { Typography, makeStyles, Link } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
     header: {
@@ -7,6 +7,9 @@ const useStyles = makeStyles(theme => ({
         top: 0,
         backgroundColor: theme.palette.background.default,
         zIndex: 10,
+    },
+    link: {
+        color: theme.palette.text.primary,
     }
 }));
 
@@ -15,7 +18,8 @@ const Header = () => {
     return (
         <header className={classes.header}>
             <Typography variant="h1">React Cache Simulator</Typography>
-            <Typography variant="caption">(c) 2020 Josiah R Lansford</Typography>
+            <Typography variant="caption">(c) 2020 Josiah R Lansford, </Typography>
+            <Link variant="caption" className={classes.link} href="https://josiahlansford.com">josiahlansford.com</Link>
         </header>
     )
 }
