@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/cache-simulator/static/css/main.e9867400.chunk.css",
+    "main.js": "/cache-simulator/static/js/main.70e48189.chunk.js",
+    "main.js.map": "/cache-simulator/static/js/main.70e48189.chunk.js.map",
+    "runtime-main.js": "/cache-simulator/static/js/runtime-main.447693bf.js",
+    "runtime-main.js.map": "/cache-simulator/static/js/runtime-main.447693bf.js.map",
+    "static/js/2.bf02416e.chunk.js": "/cache-simulator/static/js/2.bf02416e.chunk.js",
+    "static/js/2.bf02416e.chunk.js.map": "/cache-simulator/static/js/2.bf02416e.chunk.js.map",
+    "index.html": "/cache-simulator/index.html",
+    "precache-manifest.92a9aa703e79534effd310e559f40243.js": "/cache-simulator/precache-manifest.92a9aa703e79534effd310e559f40243.js",
+    "service-worker.js": "/cache-simulator/service-worker.js",
+    "static/css/main.e9867400.chunk.css.map": "/cache-simulator/static/css/main.e9867400.chunk.css.map",
+    "static/js/2.bf02416e.chunk.js.LICENSE.txt": "/cache-simulator/static/js/2.bf02416e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.447693bf.js",
+    "static/js/2.bf02416e.chunk.js",
+    "static/css/main.e9867400.chunk.css",
+    "static/js/main.70e48189.chunk.js"
+  ]
+}
