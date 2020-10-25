@@ -136,7 +136,7 @@ const App = () => {
   return (
     <div className={classes.app}>
       <div className={classes.headerLinkContainer}>
-        <Link className={classes.headerLink} href="https://josiahlansford.com/projects">&laquo; Back to Projects</Link>
+        <Link className={classes.headerLink} href="https://josiahlansford.com/#projects">&laquo; Back to Projects</Link>
       </div>
       <Header />
       <div className={classes.flexContainer}>

@@ -20,7 +20,7 @@ const Header = () => {
     return (
         <header className={classes.header}>
             <Typography variant="h1">React Cache Simulator</Typography>
-            <Typography variant="caption">(c) 2020 Josiah R Lansford, </Typography>
+            <Typography variant="caption">&#169;2020, Josiah Lansford. </Typography>
             <Link variant="caption" className={classes.link} href="https://josiahlansford.com">josiahlansford.com</Link>
         </header>
     )
